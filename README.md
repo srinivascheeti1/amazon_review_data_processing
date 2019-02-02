@@ -1,4 +1,4 @@
-#amazon_review_data_processing
+# amazon_review_data_processing_doc
 
 ## Processing of https://registry.opendata.aws Amazon Customer Reviews dataset
 This project is to provide http REST API's for querying data that was ingested, cleansed and stored as part 
