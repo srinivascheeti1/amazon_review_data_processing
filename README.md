@@ -20,6 +20,8 @@ The used data set reference (one fo the .gz files) could be found in this [link]
 * Start with registering a user (refer to ) to get a _apikey_ used as a authentication header.
 * The subsequent API calls, will have access to that data which was loaded and cleansed using the provided API key.
 
+## Test condition
+* Once the docker container is launched, launch the test_suit using _python test_suit.py_ command.
 
 ## Scripts
 * init.sql to create required tables in mysql.
