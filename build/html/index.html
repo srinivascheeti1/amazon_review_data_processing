@@ -1,0 +1,402 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Welcome to docker_data_processing_assign’s documentation! &#8212; docker_assign 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-docker-data-processing-assign-s-documentation">
+<h1>Welcome to docker_data_processing_assign’s documentation!<a class="headerlink" href="#welcome-to-docker-data-processing-assign-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="module-app_package.app">
+<span id="app-package-app-module"></span><h2>app_package.app module<a class="headerlink" href="#module-app_package.app" title="Permalink to this headline">¶</a></h2>
+<p>app module maintains the initiation of flask application and data ingestion and cleansing process</p>
+<p>Author: Srinivas Rao Cheeti
+email: <a class="reference external" href="mailto:srinivascheeti1&#37;&#52;&#48;gmail&#46;com">srinivascheeti1<span>&#64;</span>gmail<span>&#46;</span>com</a>
+Date: Feb 2, 2019</p>
+<dl class="class">
+<dt id="app_package.app.DataProcessor">
+<em class="property">class </em><code class="descclassname">app_package.app.</code><code class="descname">DataProcessor</code><span class="sig-paren">(</span><em>log_level</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app_package/app.html#DataProcessor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app_package.app.DataProcessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app_package.app.get_entire_data_for_a_market">
+<code class="descclassname">app_package.app.</code><code class="descname">get_entire_data_for_a_market</code><span class="sig-paren">(</span><em>marketplace</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app_package/app.html#get_entire_data_for_a_market"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app_package.app.get_entire_data_for_a_market" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is used to request entire data for a market place.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>marketplace</strong> – This field is the country abbreviation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Returns a JSON response with all the columns data for the matching marketplace.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="app_package.app.get_market_place_review_id_data">
+<code class="descclassname">app_package.app.</code><code class="descname">get_market_place_review_id_data</code><span class="sig-paren">(</span><em>marketplace</em>, <em>review_id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app_package/app.html#get_market_place_review_id_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app_package.app.get_market_place_review_id_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets market place review data for a specific markets (country) review_id.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>marketplace</strong> – This field is the country abbreviation.</li>
+<li><strong>review_id</strong> – This field is the review id that is being looked on.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="app_package.app.get_object_data_based_on_its_value">
+<code class="descclassname">app_package.app.</code><code class="descname">get_object_data_based_on_its_value</code><span class="sig-paren">(</span><em>obj</em>, <em>keyword</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app_package/app.html#get_object_data_based_on_its_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app_package.app.get_object_data_based_on_its_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>:param The data object from the path parameters of the API call.
+:param keyword: The keyword to search from the query parameter of the API call.
+:return:</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app_package.app.get_total_count_of_reviews">
+<code class="descclassname">app_package.app.</code><code class="descname">get_total_count_of_reviews</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/app_package/app.html#get_total_count_of_reviews"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app_package.app.get_total_count_of_reviews" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function performs a check on count of the number of rows in the data object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Count of the number of reviews in the data object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="app_package.app.index_page">
+<code class="descclassname">app_package.app.</code><code class="descname">index_page</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/app_package/app.html#index_page"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app_package.app.index_page" title="Permalink to this definition">¶</a></dt>
+<dd><p>Basic index page to say hello</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Hello</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="app_package.app.initiate_data_ingestion_process">
+<code class="descclassname">app_package.app.</code><code class="descname">initiate_data_ingestion_process</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/app_package/app.html#initiate_data_ingestion_process"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app_package.app.initiate_data_ingestion_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Data ingestion and cleansing is initiated.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app_package.app.register_user">
+<code class="descclassname">app_package.app.</code><code class="descname">register_user</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/app_package/app.html#register_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app_package.app.register_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Route for the registration API.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Return generated api key for the registration request</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-app_package.app_dal">
+<span id="app-package-app-dal-module"></span><h2>app_package.app_dal module<a class="headerlink" href="#module-app_package.app_dal" title="Permalink to this headline">¶</a></h2>
+<p>app_dal module is used as a data access layer.</p>
+<p>Author: Srinivas Rao Cheeti
+email: <a class="reference external" href="mailto:srinivascheeti1&#37;&#52;&#48;gmail&#46;com">srinivascheeti1<span>&#64;</span>gmail<span>&#46;</span>com</a>
+Date: Feb 2, 2019</p>
+<dl class="class">
+<dt id="app_package.app_dal.AppDAL">
+<em class="property">class </em><code class="descclassname">app_package.app_dal.</code><code class="descname">AppDAL</code><span class="sig-paren">(</span><em>level</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app_package/app_dal.html#AppDAL"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app_package.app_dal.AppDAL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="app_package.app_dal.AppDAL.get_sql_connection">
+<code class="descname">get_sql_connection</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/app_package/app_dal.html#AppDAL.get_sql_connection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app_package.app_dal.AppDAL.get_sql_connection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Establishes a connection to MySQL database</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Returns a connection to mysql.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-app_package.app_worker">
+<span id="app-package-app-worker-module"></span><h2>app_package.app_worker module<a class="headerlink" href="#module-app_package.app_worker" title="Permalink to this headline">¶</a></h2>
+<p>app_worker module is used to maintain business logic required for processing each of the request</p>
+<p>Author: Srinivas Rao Cheeti
+email: <a class="reference external" href="mailto:srinivascheeti1&#37;&#52;&#48;gmail&#46;com">srinivascheeti1<span>&#64;</span>gmail<span>&#46;</span>com</a>
+Date: Feb 2, 2019</p>
+<dl class="class">
+<dt id="app_package.app_worker.AppWorker">
+<em class="property">class </em><code class="descclassname">app_package.app_worker.</code><code class="descname">AppWorker</code><span class="sig-paren">(</span><em>file_size</em>, <em>level</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app_package/app_worker.html#AppWorker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app_package.app_worker.AppWorker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="app_package.app_worker.AppWorker.get_entire_data_for_a_market">
+<code class="descname">get_entire_data_for_a_market</code><span class="sig-paren">(</span><em>marketdata</em>, <em>marketplace</em>, <em>limit=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app_package/app_worker.html#AppWorker.get_entire_data_for_a_market"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app_package.app_worker.AppWorker.get_entire_data_for_a_market" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>marketdata</strong> – The data object on which the query to fetch data is performed.</li>
+<li><strong>marketplace</strong> – The country on which the filter is to be applied.</li>
+<li><strong>limit</strong> – Limit query parameter sets the limit on the number of records to fetch.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">JSON data of the specific request.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="app_package.app_worker.AppWorker.get_entire_data_from_dataframe">
+<code class="descname">get_entire_data_from_dataframe</code><span class="sig-paren">(</span><em>marketdata</em>, <em>limit=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app_package/app_worker.html#AppWorker.get_entire_data_from_dataframe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app_package.app_worker.AppWorker.get_entire_data_from_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>marketdata</strong> – The data object on which the query to fetch data is performed.</li>
+<li><strong>limit</strong> – Limit query parameter sets the limit on the number of records to fetch.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">JSON data of the specific request.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="app_package.app_worker.AppWorker.get_market_place_review_id_data">
+<code class="descname">get_market_place_review_id_data</code><span class="sig-paren">(</span><em>marketdata</em>, <em>marketplace</em>, <em>reviewid</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app_package/app_worker.html#AppWorker.get_market_place_review_id_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app_package.app_worker.AppWorker.get_market_place_review_id_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>GET market place data for a specific review.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>marketdata</strong> – The data object on which the query to fetch data is performed.</li>
+<li><strong>marketplace</strong> – The country on which the filter is to be applied.</li>
+<li><strong>reviewid</strong> – The review id of the revies for which the data is requested</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">JSON data of the specific request.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="app_package.app_worker.AppWorker.get_object_data_with_keyword">
+<code class="descname">get_object_data_with_keyword</code><span class="sig-paren">(</span><em>marketdata</em>, <em>object_to_ckeck</em>, <em>keyword</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app_package/app_worker.html#AppWorker.get_object_data_with_keyword"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app_package.app_worker.AppWorker.get_object_data_with_keyword" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to check on a column and apply filter on the string content.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>marketdata</strong> – The data object on which the query to fetch data is performed.</li>
+<li><strong>object_to_ckeck</strong> – Column/Object name to check.</li>
+<li><strong>keyword</strong> – Object keys string to filter on.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">JSON data of the specific request.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="app_package.app_worker.AppWorker.get_pandas_dataframe">
+<code class="descname">get_pandas_dataframe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/app_package/app_worker.html#AppWorker.get_pandas_dataframe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app_package.app_worker.AppWorker.get_pandas_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function loads the ingetsed dataset and cleanses amnd structures the data and generates a dataframe.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dataframe of the entire cleansed data which was processed from the ingested dataset usign pandas.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="app_package.app_worker.AppWorker.register_user">
+<code class="descname">register_user</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app_package/app_worker.html#AppWorker.register_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app_package.app_worker.AppWorker.register_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function inserts the registered user details into mysql database(userbase table).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>request</strong> – JSON request content provided as part of registration API call.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Returns apikey (GUID) and the username</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="app_package.app_worker.AppWorker.validate_api_key">
+<code class="descname">validate_api_key</code><span class="sig-paren">(</span><em>headers</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app_package/app_worker.html#AppWorker.validate_api_key"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app_package.app_worker.AppWorker.validate_api_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function queries mysql userbase table to check if the user exist.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>headers</strong> – Header information for API call.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Boolean value set to check if the user is authenticated.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-app_package.test_suit">
+<span id="app-package-test-suit-module"></span><h2>app_package.test_suit module<a class="headerlink" href="#module-app_package.test_suit" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="app_package.test_suit.TestFlaskApp">
+<em class="property">class </em><code class="descclassname">app_package.test_suit.</code><code class="descname">TestFlaskApp</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app_package/test_suit.html#TestFlaskApp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app_package.test_suit.TestFlaskApp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="app_package.test_suit.TestFlaskApp.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/app_package/test_suit.html#TestFlaskApp.setUp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app_package.test_suit.TestFlaskApp.setUp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="app_package.test_suit.TestFlaskApp.test_404">
+<code class="descname">test_404</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/app_package/test_suit.html#TestFlaskApp.test_404"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app_package.test_suit.TestFlaskApp.test_404" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="app_package.test_suit.TestFlaskApp.test_review_count">
+<code class="descname">test_review_count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/app_package/test_suit.html#TestFlaskApp.test_review_count"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#app_package.test_suit.TestFlaskApp.test_review_count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Welcome to docker_data_processing_assign’s documentation!</a><ul>
+<li><a class="reference internal" href="#module-app_package.app">app_package.app module</a></li>
+<li><a class="reference internal" href="#module-app_package.app_dal">app_package.app_dal module</a></li>
+<li><a class="reference internal" href="#module-app_package.app_worker">app_package.app_worker module</a></li>
+<li><a class="reference internal" href="#module-app_package.test_suit">app_package.test_suit module</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Srinivas Rao Cheeti.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
