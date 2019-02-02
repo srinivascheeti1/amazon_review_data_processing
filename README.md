@@ -11,7 +11,7 @@ The used data set reference (one fo the .gz files) could be found in this [link]
 
 
 ## Getting Started
-* Clone in to the GIT repository [link](http://gitrepo.gom).
+* Clone in to the GIT repository [link](https://github.com/srinivascheeti1/amazon_review_data_processing.git).
 * In the root directory, i.e, DOCKER, run the command **docker-compose up**
 * In a moment, depending on the size of the data file that is being ingested, you should be ready 
   to make API calls after you notice below lines of trace which means the spinup process is successfull.
