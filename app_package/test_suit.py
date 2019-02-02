@@ -1,35 +1,44 @@
-import unittest
+"""
+test_suit module contains the test cases necessary for the docker up and ingestion of data process to be validated
 
-try:
-    import app
-    import app_worker
-except Exception as e:
-    print(e)
+Author: Srinivas Rao Cheeti
+email: srinivascheeti1@gmail.com
+Date: Feb 2, 2019
+"""
+
+import unittest
+import requests
+import json
 
 
 class TestFlaskApp(unittest.TestCase):
     def setUp(self):
-        self.app = app.flaskapp.test_client()
-        self.app_wkr = app_worker.AppWorker('small', 'INFO')
+        self.host = 'http://0.0.0.0:5000'
+        self.test_user_name = 'tom'
 
-    # def test_index(self):
-    #     rv = self.app.get('/')
-    #     assert rv.status == '200 OK'
+    def test_count_api(self):
+        count_response = requests.get(self.host + '/v1/data/marketplace/reviewcount')
+        self.assertEqual(count_response.status_code, 200)
 
-    def test_review_count(self):
-        rv = self.app.get('/v1/data/marketplace/object/review_id/keyword/R2BUV9QJI2A00X')
-        self.assertEqual(rv.status, '200 OK')
-        self.assertEqual(rv[0].customer_id, 7360347)
-        print("@@@@@@@@@@@#################$$$$$$$$$$$@@@@@@@@@@@")
+    def test_unauthorized(self):
+        review_response = requests.get(self.host + '/v1/data/marketplace/US/review/R1AXGS1W4YFXMX')
+        self.assertEqual(review_response.status_code, 401)
 
-    #     rv = self.app.get('/add/0/10')
-    #     self.assertEqual(rv.status, '200 OK')
-    #     self.assertEqual(rv.data, '10')
-    #
-    def test_404(self):
-        rv = self.app.get('/v1/data/marketplace/object/review_id/keyword/ABC')
-        self.assertEqual(rv.status, '404 NOT FOUND')
-        print("@@@@@@@@@@@#################$$$$$$$$$$$@@@@@@@@@@@")
+    def test_register_user_and_other_apis(self):
+        headers = {"Content-Type": "application/json"}
+        registration_response = requests.post(self.host + '/v1/data/registeruser',
+                                              data=json.dumps({"username": self.test_user_name}),  headers=headers)
+        data = json.loads(registration_response.content.decode('utf8').replace("'", '"'))
+        self.assertEqual(registration_response.status_code, 200)
+        self.assertEqual(data['username'], self.test_user_name)
+
+        headers = {"x-api-key": data['x-api-key']}
+        review_limit_response = requests.get(self.host + '/v1/data/marketplace/US?limit=1', headers=headers)
+        self.assertEqual(review_limit_response.status_code, 200)
+
+        headers = {"x-api-key": data['x-api-key']+'xyz'}
+        review_limit_response = requests.get(self.host + '/v1/data/marketplace/US?limit=1', headers=headers)
+        self.assertEqual(review_limit_response.status_code, 401)
 
 
 if __name__ == '__main__':
