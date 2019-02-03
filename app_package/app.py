@@ -23,6 +23,7 @@ class DataProcessor:
         self.app_wkr = app_worker.AppWorker('large', log_level)
 
 
+# Create a Flask WSGI application
 flaskapp = Flask(__name__)
 
 app_wkr = DataProcessor('INFO').app_wkr
@@ -121,4 +122,4 @@ if __name__ == '__main__':
     print('About to start data ingestion')
     print('######################################################################')
     initiate_data_ingestion_process()
-    flaskapp.run(debug=True, host='0.0.0.0')
+    flaskapp.run(debug=True, host='0.0.0.0') # Start a development server

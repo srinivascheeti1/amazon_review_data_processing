@@ -14,7 +14,5 @@ RUN wget https://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_us_Softw
 COPY app.py /app_package
 COPY app_worker.py /app_package
 COPY app_dal.py /app_package
-COPY ../test/test_suit.py /app_package
 
-CMD python -m test_suit.py
 CMD python app.py
