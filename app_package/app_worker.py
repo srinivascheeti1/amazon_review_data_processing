@@ -100,7 +100,7 @@ class AppWorker:
                 else:
                     jsondat[d] = value
 
-            return jsonify(jsondat)
+            return jsonify({"results": jsondat})
         else:
             abort(404, {'message': 'review for {:} id was not found'.format(reviewid)})
 
@@ -129,7 +129,7 @@ class AppWorker:
                     else:
                         jsondat[d] = value
                 dict.append(jsondat)
-            return jsonify(dict)
+            return jsonify({"results":dict})
         else:
             abort(404, {'message': 'country {:} dosent exist or please check case'.format(marketplace)})
 
@@ -157,7 +157,7 @@ class AppWorker:
                     else:
                         jsondat[d] = value
                 dict.append(jsondat)
-            return jsonify(dict)
+            return jsonify({"results":dict})
         else:
             return jsonify({})
 
@@ -184,6 +184,6 @@ class AppWorker:
                     else:
                         jsondat[d] = value
                 dict.append(jsondat)
-            return jsonify(dict)
+            return jsonify({"results":dict})
         else:
             abort(404, {'message': 'no string found with the request keyword - {:}'.format(keyword)})
