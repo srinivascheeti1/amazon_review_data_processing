@@ -68,7 +68,6 @@ def get_market_place_review_id_data(marketplace, review_id):
     except Exception as e:
         print("Logging error {:} which could be sent as a email or moved to a Queue service.".format(e))
         return app_wkr.make_error(500, 'something wrong with the server')
-        # abort(500, {'message': 'something wrong with the server'})
 
 @flaskapp.route('/v1/data/marketplace/<marketplace>', methods=['GET'])
 def get_entire_data_for_a_market(marketplace):
@@ -87,7 +86,6 @@ def get_entire_data_for_a_market(marketplace):
     except Exception as e:
         print("Logging error {:} which could be sent as a email or moved to a Queue service.".format(e))
         return app_wkr.make_error(500, 'something wrong with the server')
-        # abort(500, {'message': 'something wrong with the server'})
 
 
 @flaskapp.route('/v1/data/marketplace/reviewcount', methods=['GET'])
@@ -102,7 +100,6 @@ def get_total_count_of_reviews():
     except Exception as e:
         print("Logging error {:} which could be sent as a email or moved to a Queue service.".format(e))
         return app_wkr.make_error(500, 'something wrong with the server')
-        # abort(500, {'message': 'something wrong with the server'})
 
 
 @flaskapp.route('/v1/data/marketplace/object/<obj>/keyword/<keyword>', methods=['GET'])
@@ -122,7 +119,6 @@ def get_object_data_based_on_its_value(obj, keyword):
     except Exception as e:
         print("Logging error {:} which could be sent as a email or moved to a Queue service.".format(e))
         return app_wkr.make_error(500, 'something wrong with the server')
-        # abort(500, {'message': 'something wrong with the server'})
 
 
 @flaskapp.route('/v1/data/registeruser', methods=['POST'])
@@ -141,7 +137,6 @@ def register_user():
     except Exception as e:
         print("Logging error {:} which could be sent as a email or moved to a Queue service.".format(e))
         return app_wkr.make_error(500, 'something wrong with the server')
-        # abort(500, {'message': 'something wrong with the server'})
 
 
 if __name__ == '__main__':

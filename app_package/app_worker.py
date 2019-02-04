@@ -46,7 +46,6 @@ class AppWorker:
             cursor.execute("""INSERT INTO userbase (apikey, username) VALUES (%s,%s)""", (str(apikey), username))
         except Exception as e:
             print("Logging error {:} which could be sent as a email or moved to a Queue service.".format(e))
-            # abort(500, {'message': 'user could not be registered'})
             return self.make_error(500, 'user could not be registered')
         connection.commit()
         connection.close()
@@ -68,7 +67,6 @@ class AppWorker:
         except Exception as e:
             print("Logging error {:} which could be sent as a email or moved to a Queue service.".format(e))
             return self.make_error(500, 'apikey could not be generated')
-            # abort(500, {'message': 'apikey could not be generated'})
         rows = cursor.fetchall()
         if len(rows) > 0:
             authorized = True
@@ -113,7 +111,6 @@ class AppWorker:
             return jsonify({"results": jsondat})
         else:
             return self.make_error(404, 'review for {:} id was not found'.format(reviewid))
-            # abort(404, {'message': 'review for {:} id was not found'.format(reviewid)})
 
     def get_entire_data_for_a_market(self, marketdata, marketplace, limit=None):
         """
@@ -143,7 +140,6 @@ class AppWorker:
             return jsonify({"results":dict})
         else:
             return self.make_error(404, 'country {:} dosent exist or please check case'.format(marketplace))
-            # abort(404, {'message': 'country {:} dosent exist or please check case'.format(marketplace)})
 
     def get_entire_data_from_dataframe(self, marketdata, limit=None):
         """
@@ -199,7 +195,6 @@ class AppWorker:
             return jsonify({"results":dict})
         else:
             return self.make_error(404, 'no string found with the request keyword - {:}'.format(keyword))
-            # abort(404, {'message': 'no string found with the request keyword - {:}'.format(keyword)})
 
     def make_error(self, status_code, message):
         response = jsonify({
