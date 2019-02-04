@@ -41,6 +41,7 @@ The used data set reference (one fo the .gz files) could be found in this [link]
 
 
 ## Flask Endpoints to query the ingested data 
+**Create a user using create user API to get the apikey. This API key is used for authenticating other API's**
  > Use host = 0.0.0.0:5000 if setup is done locally.
 
 
@@ -49,7 +50,7 @@ The used data set reference (one fo the .gz files) could be found in this [link]
 x-api-key: <apikey>
 ```
 * **POST - Create a user**
-    * curl  -H "Content-Type: application/json" -d '{"username":"requestor_username"}' -X POST http://0.0.0.0:5000/v1/data/registeruser
+    * curl  -H "Content-Type: application/json" -d '{"username":"requester_username"}' -X POST http://{host}/v1/data/registeruser
 * **GET - Sample reviews with limit, say 10 items**
     * curl -X GET -H "x-api-key: <apikey>" http://{host}/v1/data/marketplace/<marketplace>?limit={limit}
 * **GET - entire marketplace reviews count**
