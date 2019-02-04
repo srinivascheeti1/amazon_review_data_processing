@@ -67,8 +67,8 @@ def get_market_place_review_id_data(marketplace, review_id):
         return app_wkr.get_market_place_review_id_data(market_data, marketplace, review_id)
     except Exception as e:
         print("Logging error {:} which could be sent as a email or moved to a Queue service.".format(e))
-        abort(500, {'message': 'something wrong with the server'})
-
+        return app_wkr.make_error(500, 'something wrong with the server')
+        # abort(500, {'message': 'something wrong with the server'})
 
 @flaskapp.route('/v1/data/marketplace/<marketplace>', methods=['GET'])
 def get_entire_data_for_a_market(marketplace):
@@ -86,7 +86,8 @@ def get_entire_data_for_a_market(marketplace):
         return app_wkr.get_entire_data_for_a_market(market_data, marketplace, limit)
     except Exception as e:
         print("Logging error {:} which could be sent as a email or moved to a Queue service.".format(e))
-        abort(500, {'message': 'something wrong with the server'})
+        return app_wkr.make_error(500, 'something wrong with the server')
+        # abort(500, {'message': 'something wrong with the server'})
 
 
 @flaskapp.route('/v1/data/marketplace/reviewcount', methods=['GET'])
@@ -100,7 +101,8 @@ def get_total_count_of_reviews():
         return jsonify({"count": str(market_data.shape[0])})
     except Exception as e:
         print("Logging error {:} which could be sent as a email or moved to a Queue service.".format(e))
-        abort(500, {'message': 'something wrong with the server'})
+        return app_wkr.make_error(500, 'something wrong with the server')
+        # abort(500, {'message': 'something wrong with the server'})
 
 
 @flaskapp.route('/v1/data/marketplace/object/<obj>/keyword/<keyword>', methods=['GET'])
@@ -119,7 +121,8 @@ def get_object_data_based_on_its_value(obj, keyword):
         return app_wkr.get_object_data_with_keyword(market_data, obj, keyword)
     except Exception as e:
         print("Logging error {:} which could be sent as a email or moved to a Queue service.".format(e))
-        abort(500, {'message': 'something wrong with the server'})
+        return app_wkr.make_error(500, 'something wrong with the server')
+        # abort(500, {'message': 'something wrong with the server'})
 
 
 @flaskapp.route('/v1/data/registeruser', methods=['POST'])
@@ -137,7 +140,8 @@ def register_user():
             return jsonify({'x-api-key': api_key, 'username': username})
     except Exception as e:
         print("Logging error {:} which could be sent as a email or moved to a Queue service.".format(e))
-        abort(500, {'message': 'something wrong with the server'})
+        return app_wkr.make_error(500, 'something wrong with the server')
+        # abort(500, {'message': 'something wrong with the server'})
 
 
 if __name__ == '__main__':
