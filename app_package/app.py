@@ -44,7 +44,11 @@ def index_page():
     :return: Hello
     """
     logging.info("Index page route")
-    return render_template('<html><body><h1>Hello</h1></body></html>')
+    try:
+        return render_template('<html><body><h1>Hello</h1></body></html>')
+    except Exception as e:
+        print("Logging error {:} which could be sent as a email or moved to a Queue service.".format(e))
+        abort(500, {'message': 'something wrong with the server'})
 
 
 @flaskapp.route('/v1/data/marketplace/<marketplace>/review/<review_id>', methods=['GET'])
@@ -57,9 +61,13 @@ def get_market_place_review_id_data(marketplace, review_id):
     """
     logging.info("Getting marketplace - {:} review with id {:}".format(marketplace, review_id))
     authorized = app_wkr.validate_api_key(request.headers)
-    if not authorized:
-        return jsonify({"message": "Unauthorized"}), 401
-    return app_wkr.get_market_place_review_id_data(market_data, marketplace, review_id)
+    try:
+        if not authorized:
+            return jsonify({"message": "Unauthorized"}), 401
+        return app_wkr.get_market_place_review_id_data(market_data, marketplace, review_id)
+    except Exception as e:
+        print("Logging error {:} which could be sent as a email or moved to a Queue service.".format(e))
+        abort(500, {'message': 'something wrong with the server'})
 
 
 @flaskapp.route('/v1/data/marketplace/<marketplace>', methods=['GET'])
@@ -71,10 +79,14 @@ def get_entire_data_for_a_market(marketplace):
     """
     logging.info("Getting market place reviews data for - {:} with either a limit or without".format(marketplace))
     authorized = app_wkr.validate_api_key(request.headers)
-    if not authorized:
-        return jsonify({"message": "Unauthorized"}), 401
-    limit = request.args.get('limit')
-    return app_wkr.get_entire_data_for_a_market(market_data, marketplace, limit)
+    try:
+        if not authorized:
+            return jsonify({"message": "Unauthorized"}), 401
+        limit = request.args.get('limit')
+        return app_wkr.get_entire_data_for_a_market(market_data, marketplace, limit)
+    except Exception as e:
+        print("Logging error {:} which could be sent as a email or moved to a Queue service.".format(e))
+        abort(500, {'message': 'something wrong with the server'})
 
 
 @flaskapp.route('/v1/data/marketplace/reviewcount', methods=['GET'])
@@ -84,7 +96,11 @@ def get_total_count_of_reviews():
     :return: Count of the number of reviews in the data object.
     """
     logging.info("Getting count of number of rows")
-    return jsonify({"count": str(market_data.shape[0])})
+    try:
+        return jsonify({"count": str(market_data.shape[0])})
+    except Exception as e:
+        print("Logging error {:} which could be sent as a email or moved to a Queue service.".format(e))
+        abort(500, {'message': 'something wrong with the server'})
 
 
 @flaskapp.route('/v1/data/marketplace/object/<obj>/keyword/<keyword>', methods=['GET'])
@@ -97,9 +113,13 @@ def get_object_data_based_on_its_value(obj, keyword):
     """
     logging.info("Getting data where object is - {:} and value is - {:}".format(obj, keyword))
     authorized = app_wkr.validate_api_key(request.headers)
-    if not authorized:
-        return jsonify({"message": "Unauthorized"}), 401
-    return app_wkr.get_object_data_with_keyword(market_data, obj, keyword)
+    try:
+        if not authorized:
+            return jsonify({"message": "Unauthorized"}), 401
+        return app_wkr.get_object_data_with_keyword(market_data, obj, keyword)
+    except Exception as e:
+        print("Logging error {:} which could be sent as a email or moved to a Queue service.".format(e))
+        abort(500, {'message': 'something wrong with the server'})
 
 
 @flaskapp.route('/v1/data/registeruser', methods=['POST'])
@@ -109,11 +129,15 @@ def register_user():
     :return: Return generated api key for the registration request
     """
     logging.info("Registering user")
-    if not request.json or not 'username' in request.json:
-        return jsonify(abort(400, {'message': 'please provide username'}))
-    else:
-        api_key, username = app_wkr.register_user(request.get_json())
-        return jsonify({'x-api-key': api_key, 'username': username})
+    try:
+        if not request.json or not 'username' in request.json:
+            return jsonify(abort(400, {'message': 'please provide username'}))
+        else:
+            api_key, username = app_wkr.register_user(request.get_json())
+            return jsonify({'x-api-key': api_key, 'username': username})
+    except Exception as e:
+        print("Logging error {:} which could be sent as a email or moved to a Queue service.".format(e))
+        abort(500, {'message': 'something wrong with the server'})
 
 
 if __name__ == '__main__':
@@ -122,4 +146,8 @@ if __name__ == '__main__':
     print('About to start data ingestion')
     print('######################################################################')
     initiate_data_ingestion_process()
-    flaskapp.run(debug=True, host='0.0.0.0') # Start a development server
+    try:
+        flaskapp.run(debug=True, host='0.0.0.0') # Start a development server
+    except Exception as e:
+        print("Logging error {:} which could be sent as a email or moved to a Queue service.".format(e))
+        abort(500, {'message': 'something wrong with the initialization of flask server'})

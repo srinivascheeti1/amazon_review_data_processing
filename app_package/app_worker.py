@@ -42,7 +42,11 @@ class AppWorker:
         apikey = uuid.uuid4()
         connection = self.dal.get_sql_connection()
         cursor = connection.cursor(buffered=True)
-        cursor.execute("""INSERT INTO userbase (apikey, username) VALUES (%s,%s)""", (str(apikey), username))
+        try:
+            cursor.execute("""INSERT INTO userbase (apikey, username) VALUES (%s,%s)""", (str(apikey), username))
+        except Exception as e:
+            print("Logging error {:} which could be sent as a email or moved to a Queue service.".format(e))
+            abort(500, {'message': 'USer could not be registered'})
         connection.commit()
         connection.close()
         cursor.close()
@@ -58,7 +62,11 @@ class AppWorker:
         auth_key = headers.get("x-api-key")
         connection = self.dal.get_sql_connection()
         cursor = connection.cursor(buffered=True)
-        cursor.execute("SELECT * FROM userbase WHERE apikey = '{:}'".format(auth_key))
+        try:
+            cursor.execute("SELECT * FROM userbase WHERE apikey = '{:}'".format(auth_key))
+        except Exception as e:
+            print("Logging error {:} which could be sent as a email or moved to a Queue service.".format(e))
+            abort(500, {'message': 'apikey could not be generated'})
         rows = cursor.fetchall()
         if len(rows) > 0:
             authorized = True
